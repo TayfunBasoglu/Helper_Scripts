@@ -4,7 +4,7 @@ import os
 from PIL import Image
 
 #chapter url
-page_url = "https://readberserk.com/chapter/berserk-chapter-a0/"
+page_url = "http://berserkmanga.net/manga/berserk-chapter-1/"
 
 #Create Directory and Go
 os.mkdir("downloadfoldercreateee")
@@ -13,8 +13,8 @@ os.chdir("downloadfoldercreateee")
 #Connect and Get Images
 source = BeautifulSoup(requests.get(page_url).content,"lxml")
 images_list = []
-for i in source.find_all("img",attrs={"class":"pages__img"}):
-  images_list.append(i["src"])
+for i in source.find_all("div",attrs={"class":"img_container"}):
+  images_list.append(i.find("img")["src"])
   
 #Download Images
 value = 1
