@@ -36,6 +36,7 @@ file_list_sorted = sorted(os.listdir().copy(), key=lambda x: int(os.path.splitex
 
 #Create Pdf
 liste = []
+print("Preparing PDF")
 for i in file_list_sorted[0:]:
     if str(i).endswith("jpg"):
         liste.append(Image.open(i).convert("RGB"))
@@ -46,3 +47,4 @@ for files in os.listdir():
     os.remove(files)
 os.chdir("../")
 os.rmdir("downloadfoldercreateee")
+print("Done")
