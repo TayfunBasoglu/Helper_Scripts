@@ -37,5 +37,10 @@ for page_names in ("following","followers"):
 
 #list
 print("\n\n# List of Who Doesn't Follow You Back")
-for i in set(following) - set(followers):
-    print("  -",i[1:-1])
+difference_list = set(following) - set(followers)
+
+if len(difference_list) == 0:
+    print("0 person")
+else:
+    for i in difference_list:
+        print("  -",i[1:-1])
