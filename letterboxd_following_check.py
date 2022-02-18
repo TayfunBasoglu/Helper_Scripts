@@ -36,7 +36,7 @@ for page_names in ("following","followers"):
     connect_page(page_names)
 
 #list
-print("\n\n# List of Who Doesn't Follow You Back")
+print("\n\n# List of unfollowers")
 difference_list = set(following) - set(followers)
 
 if len(difference_list) == 0:
