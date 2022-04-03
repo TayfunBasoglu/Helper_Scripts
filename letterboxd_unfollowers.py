@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 ##### Profile Username
-username = "tayyfun"
+username = "username"
 
 #lists
 following = []
