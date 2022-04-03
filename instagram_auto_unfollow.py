@@ -47,20 +47,19 @@ def get_f_f():
     for i in [3,2]:   
         click_followers = browser.find_element_by_xpath("/html/body/div[1]/section/main/div/header/section/ul/li["+str(i)+"]/a/div")
         action.click(on_element = click_followers).perform()
-        time.sleep(delay+2)
+        time.sleep(delay+3)
         scroll()
         time.sleep(delay+2)
         source = BeautifulSoup(browser.page_source, 'lxml')
         source = source.find("div",{"class":"isgrP"}).find_all("a")
-        for i in source:
-            if i == 2:
-                followers.append(str(i.get("href"))[1:-1])
-            else:
+        if i == 3:
+            for i in source:
                 following.append(str(i.get("href"))[1:-1])
-    a = list()
-    a.append(followers)
-    a.append(following)
-    return set(following) - set(followers)
+                
+        else:
+            for i in source:
+                followers.append(str(i.get("href"))[1:-1])
+    return following
 
 def unfollowbot(unf_list):
     for i in list(unf_list)[:50]:
