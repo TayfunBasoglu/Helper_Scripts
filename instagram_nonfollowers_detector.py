@@ -9,22 +9,20 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import time
 
+#-----------------
 username = "username"
 password = "password"
-delay = 4 #minumum
+followers_total = NUMBER #your profile
+following_total = NUMBER #your profile
 
+delay = 4 #minumum
+#-----------------
 
 def go_profile(usern):
     time.sleep(delay)
     browser.get("https://www.instagram.com/"+str(usern))
     time.sleep(delay+5)
     source = BeautifulSoup(browser.page_source, 'lxml')
-    source = source.find("ul",{"class":"_aa_7"})
-    follow = []
-    for i in source.find_all('span'):
-        follow.append(i.text)  
-    globals()["followers_total"] = follow[1]
-    globals()["following_total"] = follow[2]
     
 
 def login():
@@ -37,6 +35,7 @@ def login():
 
 
 def followdata():
+    time.sleep(delay)
 
     followers_list = []
     following_list = []
