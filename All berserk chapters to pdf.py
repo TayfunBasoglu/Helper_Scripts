@@ -21,6 +21,7 @@ for chapter_link in chapters_links[::-1]:
 
     # Chapter
     chapter_link = chapter_link.get("href")
+    print(chapter_link)
     chapter_source = BeautifulSoup(requests.get(chapter_link).content,"lxml")
 
     # Take Images
@@ -32,6 +33,8 @@ for chapter_link in chapters_links[::-1]:
             image_link = image_link[:image_link.find("?")]
         image_link = image_link.strip()
         file_name = image_link[image_link.rfind("/")+1:]
+        if "proxy" in file_name:
+            continue
         images_names.append(file_name)
 
     # Save Images
@@ -41,7 +44,7 @@ for chapter_link in chapters_links[::-1]:
                 handler.write(img_data)
                 print(file_name,"Done")
         except:
-            pass
+            print(file_name)
 
     # Create Pdf
     print("PDF Preparing...")
