@@ -10,7 +10,7 @@ website_source = BeautifulSoup(requests.get(website).content,"lxml")
 chapters_links = website_source.find_all("a",{"class":"btn btn-sm btn-primary mr-2"})
 
 # Loop for all chapters
-for chapter_link in chapters_links[::-1]:
+for chapter_link in chapters_links[290::-1]:
     print("\n\n#############################")
 
     # Create Directory and Go
@@ -30,6 +30,7 @@ for chapter_link in chapters_links[::-1]:
         image_link = i.get("src")
         if "?" in image_link:
             image_link = image_link[:image_link.find("?")]
+        image_link = image_link.strip()
         file_name = image_link[image_link.rfind("/")+1:]
         images_names.append(file_name)
 
