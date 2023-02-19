@@ -25,6 +25,7 @@ def total_season():
 def episodes_info(season):
     df = pd.DataFrame(columns=["Name","Date","Rate","Vote","Season"])
     for i in range(1,season+1):
+        print("Season",i,"...")
         url = "https://www.imdb.com/title/"+show_id+"/episodes?season="+str(i)
         headers = {"User-Agent": "Mozilla/5.0", "accept-language": "en-US,en"}
         source = BeautifulSoup(requests.get(url,headers=headers).content,"lxml")
